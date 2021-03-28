@@ -1,0 +1,33 @@
+body {
+    background-color: #f9f5f5;
+    margin:40px auto;
+    max-width:75%;
+    font-size:18px;
+}
+
+h1 {
+    text-align: center;
+    color: #161616;
+}
+
+h2 {
+    color: #191919;
+}
+
+p, li {
+    color: #222222;
+}
+
+a {
+    color: #203000;
+}
+
+div {
+    color: #212121;
+}
+
+table, th, td {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
