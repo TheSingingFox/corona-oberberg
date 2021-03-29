@@ -19,7 +19,7 @@
        "/style.css" #P"~/quicklisp/local-projects/corona-oberberg/style.css")
       hunchentoot:*dispatch-table*)
 
-(hunchentoot:define-easy-handler (main :uri "/corona") ()
+(hunchentoot:define-easy-handler (main :uri "/corona/") ()
   (setf (hunchentoot:content-type*) "text/html")
   (homepage))
 
