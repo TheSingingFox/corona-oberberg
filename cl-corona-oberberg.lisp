@@ -3,7 +3,8 @@
 (in-package #:cl)
 
 (defun main ()
-  (cl-corona-oberberg:start-server 8080)
+  (let ((cmd (uiop:command-line-arguments)))
+    (cl-corona-oberberg:start-server (if cmd (parse-integer (car cmd)) 80)))
   (handler-case (bt:join-thread (find-if (lambda (th)
                                            (search "hunchentoot" (bt:thread-name th)))
                                          (bt:all-threads)))
