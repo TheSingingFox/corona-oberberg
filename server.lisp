@@ -44,31 +44,34 @@
 
 (defun homepage ()
   (let ((title "Corona im Oberbergischen Kreis" )
-	(deaths (deaths))
-	(deaths-week (deaths-week))
-	(deaths-yesterday (deaths-yesterday))
-	(cases (cases))
-	(cases-week (cases-week))
-	(cases-yesterday (cases-yesterday))
-	(population (population))
-	(incidence (incidence)))
+	      (deaths (deaths))
+	      (deaths-week (deaths-week))
+	      (deaths-yesterday (deaths-yesterday))
+	      (cases (cases))
+	      (cases-week (cases-week))
+	      (cases-yesterday (cases-yesterday))
+	      (population (population))
+	      (incidence (incidence)))
     (with-page (:title title)
       (htm (:h1 (fmt "~A" title))
-	   (:h2 "Absolute Zahlen")
-	   (fmt "~A" (alist->html-table
-		      `(("Tode seit Beginn der Pandemie" . ,deaths)
-			("Coronafälle seit Beginn der Pandemie" . ,cases)
-			("Tode der letzten Woche (ausgenommen heute)" . ,deaths-week)
-			("Coronafälle der letzten Woche (ausgenommen heute)" . ,cases-week)
-			("Tode seit gestern" . ,deaths-yesterday)
-			("Coronafälle seit gestern" . ,cases-yesterday)
-			("Einwohner des Oberbergischen Kreises" . ,population))))
-	   (:h2 "Relative Verhältnisse")
-	   (fmt "~A" (alist->html-table
-		      `(("Tode pro 100 Einwohner" . ,(utils:precision-two
-						      (utils:percentage :of deaths
-									:per population)))
-			("Coronafälle pro 100 Einwohner" . ,(utils:precision-two
-							     (utils:percentage :of cases
-									       :per population)))
-			("7-Tages-Inzidenz" . ,incidence))))))))
+	         (:h2 "Absolute Zahlen")
+	         (fmt "~A" (alist->html-table
+		                  `(("Tode seit Beginn der Pandemie" . ,deaths)
+			                  ("Coronafälle seit Beginn der Pandemie" . ,cases)
+			                  ("Tode der letzten Woche (ausgenommen heute)" . ,deaths-week)
+			                  ("Coronafälle der letzten Woche (ausgenommen heute)" . ,cases-week)
+			                  ("Tode seit gestern" . ,deaths-yesterday)
+			                  ("Coronafälle seit gestern" . ,cases-yesterday)
+			                  ("Einwohner des Oberbergischen Kreises" . ,population))))
+	         (:h2 "Relative Verhältnisse")
+	         (fmt "~A" (alist->html-table
+		                  `(("Tode pro 100 Einwohner" . ,(utils:precision-two
+						                                          (utils:percentage :of deaths
+									                                                      :per population)))
+			                  ("Coronafälle pro 100 Einwohner" . ,(utils:precision-two
+							                                               (utils:percentage :of cases
+									                                                             :per population)))
+			                  ("7-Tages-Inzidenz" . ,incidence))))
+           (:button (:a :href "/corona/" "Daten neu laden"))
+           (:hr)
+           (:a :href "/" "Zurück")))))
